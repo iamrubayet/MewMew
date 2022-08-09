@@ -1,7 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const monk = require('monk');
 
 const app = express();
+const db = monk('localhost/meower');
+const mews = db.get('mews');
 
 app.use(cors());
 app.use(express.json());
@@ -26,10 +29,11 @@ app.post('/mews',(req,res)=>{
 	{
 		const mew = {
 		name : req.body.name.toString(),
-		content : req.body.content()
+		content : req.body.content.toString()
 
 	};
-	console.log(mew);
+	mews.insert(mew);
+	
 
 	}
 	else
