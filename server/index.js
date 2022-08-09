@@ -9,10 +9,7 @@ const mews = db.get('mews');
 app.use(cors());
 app.use(express.json());
 
-function isValidMew(mew){
-	return mew.name && mew.name.toString().trim() !== '' &&
-	      mew.content && mew.content.toString().trim() !== '';
-}
+
 
 
 
@@ -23,6 +20,12 @@ app.get('/',(req,res)=>{
 	});
 
 });
+
+
+function isValidMew(mew){
+	return mew.name && mew.name.toString().trim() !== '' &&
+	      mew.content && mew.content.toString().trim() !== '';
+}
 
 app.post('/mews',(req,res)=>{
 	if(isValidMew(req.body))
