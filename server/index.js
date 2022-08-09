@@ -29,10 +29,16 @@ app.post('/mews',(req,res)=>{
 	{
 		const mew = {
 		name : req.body.name.toString(),
-		content : req.body.content.toString()
+		content : req.body.content.toString(),
+		created : new Date()
 
 	};
-	mews.insert(mew);
+	mews
+	.insert(mew)
+	.then(createdMew=>{
+		res.json(createdMew);
+
+	});
 	
 
 	}
