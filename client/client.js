@@ -30,10 +30,10 @@ fetch(API_URL,{
 	}
 }).then(response=>response.json())
   .then(createdMew=>{
-  	console.log(createdMew);
   	form.reset();
   	form.style.display = '';
-    loadingElement.style.display = 'none';
+  	listAllMews();
+    
 
 
   });
@@ -44,10 +44,10 @@ fetch(API_URL,{
 
 
 function listAllMews(){
+	mewsElement.innerHTML = '';
 	fetch(API_URL)
 	.then(response=>response.json())
 	.then(mews=>{
-		console.log(mews);
 		mews.reverse();
 		mews.forEach(mew=>{
 			const div = document.createElement('div');
