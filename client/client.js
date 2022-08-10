@@ -31,7 +31,12 @@ fetch(API_URL,{
 }).then(response=>response.json())
   .then(createdMew=>{
   	form.reset();
+  	setTimeout(()=>{
   	form.style.display = '';
+
+
+  	},30000)
+  	
   	listAllMews();
     
 
