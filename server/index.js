@@ -5,7 +5,7 @@ const Filter = require('bad-words');
 const rateLimit = require('express-rate-limit');
 
 const app = express();
-const db = monk('localhost/meower');
+const db = monk(process.env.MONGODB_URI ||'localhost/meower');
 const mews = db.get('mews');
 const filter = new Filter();
 
