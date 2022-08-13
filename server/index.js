@@ -3,9 +3,10 @@ const cors = require('cors');
 const monk = require('monk');
 const Filter = require('bad-words');
 const rateLimit = require('express-rate-limit');
+require('dotenv').config();
 
 const app = express();
-const db = monk(process.env.MONGODB_URI ||'localhost/meower');
+const db = monk(process.env.MONGO_URI ||'localhost/meower');
 const mews = db.get('mews');
 const filter = new Filter();
 
